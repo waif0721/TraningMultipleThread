@@ -17,11 +17,12 @@ public class MainActivity extends AppCompatActivity {
     private Button mLoadImageButton;
     private Button mShowToastButton;
     private ProgressBar mProgessBar;
+    private static final int PROGESS_ViSIBLE=0;
     private Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
-                case 0:
+                case PROGESS_ViSIBLE:
                     mProgessBar.setVisibility(View.VISIBLE);
                     break;
                 case 1:
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg=mHandler.obtainMessage();
-                                msg.what=0;
+                                msg.what=PROGESS_ViSIBLE;
                                 mHandler.sendMessage(msg);
                                 for(int i=1;i<11;i++){
                                     sleep();
